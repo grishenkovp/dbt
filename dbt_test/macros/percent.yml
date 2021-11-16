@@ -1,0 +1,11 @@
+version: 2
+
+macros:
+  - name: percent
+    description: "Percent, 5%"
+    docs:
+      show: false
+    arguments:
+      - name: number
+        type: integer
+        description: "number"

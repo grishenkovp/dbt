@@ -1,0 +1,38 @@
+
+version: 2
+
+models:
+  - name: report_group_sales
+    description: "Report_group_sales"
+    columns:
+      - name: manager
+      - name: region
+      - name: product
+      - name: total_sum
+      
+
+  - name: report_group_sales_jan_mar
+    description: "Report_group_sales_january_march"
+    columns:
+      - name: manager
+      - name: region
+      - name: product
+      - name: total_sum     
+
+  - name: report_group_sales_product_region
+    description: "Report_group_sales_product_region"
+    columns:
+      - name: product
+      - name: r1
+      - name: r2
+      - name: r3
+      - name: r4
+      - name: r5
+      - name: total_sum
+
+  - name: report_group_sales_manager
+    description: "Report_group_sales_manager"
+    columns:
+      - name: manager
+      - name: total_sum
+      - name: percent
