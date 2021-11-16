@@ -1,0 +1,55 @@
+--- Шаг 1. ---
+sudo apt-get install git libpq-dev python-dev python3-pip
+sudo apt-get remove python-cffi
+sudo pip install --upgrade cffi
+pip install cryptography~=3.4
+
+
+--- Шаг 2. ---
+python3 -m venv dbt-env
+source dbt-env/bin/activate
+
+--- Шаг 3. --- 
+pip install dbt
+
+--- Шаг 4. --- 
+pip install dbt-postgres
+
+
+--- Шаг 5. ---
+dbt install dbt_test
+
+--- Шаг 6. ---
+# Коррекция файла .dbt/profiles.yml
+dbt_test:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: postgres
+      password: nopswd
+      port: 5432
+      dbname: dbt
+      schema: public
+      threads: 1
+      keepalives_idle: 0
+      connect_timeout: 10 
+	  
+	  
+--- Шаг 7. --- 
+# Коррекция файла dbt_test/dbt-project.yml
+# Удаление шаблонов таблиц в папке models
+# Перенос всех файлов в корневую папку (на уровень выше)
+	  
+--- Шаг 8. ---
+dbt debug
+
+--- Шаг 9. ---
+dbt run
+
+--- Шаг 10. ---
+# При ошибках
+dbt test
+dbt clean
+
